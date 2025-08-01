@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f500dd03.css",
+    "main.js": "/static/js/main.6f873e82.js",
+    "static/media/leetcode.png": "/static/media/leetcode.cc13240c23b05dcdc1a5.png",
+    "static/media/unstop.jpg": "/static/media/unstop.498cb6094095bd473445.jpg",
+    "static/media/linkedin.jpg": "/static/media/linkedin.3076fb9ba48c822ca10d.jpg",
+    "static/media/github.png": "/static/media/github.c42aa4a3ced23749c3af.png",
+    "static/media/kaggle.svg": "/static/media/kaggle.de5c0ffc7b5387c4dca19a32546379e3.svg",
+    "index.html": "/index.html",
+    "main.f500dd03.css.map": "/static/css/main.f500dd03.css.map",
+    "main.6f873e82.js.map": "/static/js/main.6f873e82.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f500dd03.css",
+    "static/js/main.6f873e82.js"
+  ]
+}
