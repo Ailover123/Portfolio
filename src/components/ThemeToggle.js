@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useContext } from "react";
+import { ThemeContext } from "../App";
 
 function ThemeToggle() {
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem("theme") || "light";
-  });
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   useEffect(() => {
     if (theme === "dark") {
@@ -14,15 +13,15 @@ function ThemeToggle() {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  const handleToggle = () => {
+    toggleTheme();
   };
 
   return (
     <button
       id="themeToggle"
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
-      onClick={toggleTheme}
+      onClick={handleToggle}
       className={`theme-toggle ${theme === "dark" ? "dark" : "light"}`}
       style={{ position: "absolute", top: 20, right: 20 }}
     >
