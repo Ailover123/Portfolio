@@ -4,7 +4,11 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
-    max-width: 350px;
+    max-width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .mini-search-box {
@@ -55,7 +59,9 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
-    max-width: 400px;
+    max-width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
     justify-items: center;
   }
 
