@@ -1,0 +1,179 @@
+/* Mobile First - Small Devices */
+@media (max-width: 480px) {
+  .search-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    max-width: 350px;
+  }
+
+  .mini-search-box {
+    min-width: 140px;
+    padding: 8px 12px;
+    justify-content: center;
+  }
+
+  .option-text {
+    font-size: 12px;
+  }
+
+  .google-logo {
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+
+  .search-container {
+    max-width: 90%;
+  }
+
+  .quick-access-grid > * {
+    max-width: 25%;
+  }
+
+  .quick-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .theme-toggle {
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .theme-toggle-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Tablet - Medium Devices */
+@media (max-width: 768px) {
+  .search-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    max-width: 400px;
+    justify-items: center;
+  }
+
+  .mini-search-box {
+    min-width: 160px;
+    justify-content: center;
+  }
+
+  .google-logo {
+    font-size: 60px;
+  }
+
+  .search-container {
+    max-width: 90%;
+  }
+
+  .quick-access-grid {
+    gap: 20px;
+  }
+}
+
+/* Desktop - Large Devices */
+@media (min-width: 769px) {
+  .google-logo {
+    font-size: 120px;
+  }
+
+  .dark-theme .google-logo {
+    font-size: 120px;
+  }
+
+  .search-container {
+    max-width: 700px;
+  }
+
+  .dark-theme .search-box {
+    height: 56px;
+    font-size: 18px;
+    padding: 0 60px 0 24px;
+  }
+
+  .quick-access {
+    max-width: 700px;
+  }
+
+  .quick-icon {
+    width: 56px;
+    height: 56px;
+    font-size: 28px;
+  }
+
+  .discover-section {
+    max-width: 700px;
+  }
+
+  .discover-item {
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .discover-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 22px;
+  }
+}
+
+/* Extra Large Devices */
+@media (min-width: 1200px) {
+  .home-container {
+    max-width: 1600px;
+  }
+
+  .search-container {
+    max-width: 800px;
+  }
+
+  .dark-theme .search-container {
+    max-width: 800px;
+  }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .search-icon,
+  .mini-search-icon,
+  .theme-toggle-icon {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .cursor {
+    animation: none;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .search-box {
+    border-width: 2px;
+  }
+
+  .mini-search-box {
+    border-width: 2px;
+  }
+
+  .nav-button {
+    border-width: 2px;
+  }
+}
