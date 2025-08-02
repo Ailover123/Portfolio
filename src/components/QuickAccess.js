@@ -5,7 +5,7 @@ import { SiLeetcode, SiKaggle } from "react-icons/si";
 const quickItems = [
   {
     name: "LinkedIn",
-    url: "https://linkedin.com/in/nishal",
+    url: "https://www.linkedin.com/in/nishalpoojary/",
     icon: (
       <img
         src={require("../assets/linkedin.jpg")}
@@ -17,7 +17,7 @@ const quickItems = [
 
   {
     name: "Unstop",
-    url: "https://unstop.com",
+    url: "https://unstop.com/u/nishapoo9082",
     icon: (
       <img
         src={require("../assets/unstop.jpg")}
@@ -28,7 +28,7 @@ const quickItems = [
   },
   {
     name: "LeetCode",
-    url: "https://leetcode.com/nishal",
+    url: "https://leetcode.com/u/nishalpoojary71/",
     icon: (
       <img
         src={require("../assets/leetcode.png")}
@@ -39,7 +39,7 @@ const quickItems = [
   },
   {
     name: "GitHub",
-    url: "https://github.com/nishal",
+    url: "https://github.com/Ailover123",
     icon: (
       <img
         src={require("../assets/github.png")}
@@ -50,7 +50,7 @@ const quickItems = [
   },
   {
     name: "Kaggle",
-    url: "https://kaggle.com/nishal",
+    url: "https://www.kaggle.com/nishalpoojary235",
     icon: (
       <img
         src={require("../assets/kaggle.png")}
