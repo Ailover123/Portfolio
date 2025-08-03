@@ -1,4 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+// Dummy AI overview content (replace with actual content)
+const aiOverviewContent = {
+  about: "This is a quick AI-generated overview about Nishal.",
+  skills: "Nishal is skilled in React, Java, ML, and Flutter.",
+  experience: "Nishal has worked on several full-stack projects.",
+  projects: "Some key projects include ZenLoop, NanBot, and Datadash.",
+  contact: "You can reach out to Nishal via LinkedIn or GitHub.",
+};
 
 const navTabs = ["All", "Images", "Videos", "News", "Maps"];
 
@@ -23,6 +32,33 @@ const dummyResults = [
 
 function ResultsPage({ query, goHome, navigateToPage }) {
   const [activeTab, setActiveTab] = useState("All");
+  const [isLoading, setIsLoading] = useState(true);
+  const [showAiOverview, setShowAiOverview] = useState(false);
+
+  useEffect(() => {
+    // Simulate loading delay
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+      setShowAiOverview(true);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [query]);
+
+  // Determine AI content type
+  const queryType = query.toLowerCase().includes("about")
+    ? "about"
+    : query.toLowerCase().includes("skills")
+    ? "skills"
+    : query.toLowerCase().includes("experience")
+    ? "experience"
+    : query.toLowerCase().includes("projects")
+    ? "projects"
+    : query.toLowerCase().includes("contact")
+    ? "contact"
+    : "about";
+
+  const aiContent = aiOverviewContent[queryType];
 
   return (
     <div className="results-container">
@@ -58,10 +94,21 @@ function ResultsPage({ query, goHome, navigateToPage }) {
           ))}
         </div>
       </div>
+
       <div className="results-content">
         <div className="results-info">
           About {dummyResults.length} results for <strong>{query}</strong>
         </div>
+
+        {/* AI Overview Section */}
+        {showAiOverview && (
+          <div className="ai-overview-box">
+            <h3>AI Overview</h3>
+            <p>{aiContent}</p>
+          </div>
+        )}
+
+        {/* Search Results */}
         {dummyResults.map((result, index) => (
           <div
             key={index}

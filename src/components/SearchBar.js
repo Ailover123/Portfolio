@@ -1,7 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
 import { ThemeContext } from "../App"; // Import ThemeContext
 
-function SearchBar({ onSearch, inputValue, onInputChange, theme: propTheme }) {
+function SearchBar({
+  onSearch,
+  inputValue,
+  onInputChange,
+  theme: propTheme,
+  typingText,
+  isTyping,
+}) {
   const [input, setInput] = useState("");
   const [showMicPopup, setShowMicPopup] = useState(false);
   const [showLensAnimation, setShowLensAnimation] = useState(false);
@@ -80,7 +87,8 @@ function SearchBar({ onSearch, inputValue, onInputChange, theme: propTheme }) {
         type="text"
         className="search-box"
         placeholder="Search or type URL"
-        value={currentInput}
+        disabled={isTyping}
+        value={isTyping ? typingText : currentInput}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
         style={{

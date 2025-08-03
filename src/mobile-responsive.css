@@ -1,3 +1,19 @@
+/* Base logo styles (add this to your main CSS) */
+.google-logo {
+  text-align: center;
+  margin: 40px auto 35px auto; /* Good gap below logo */
+  display: block;
+  font-weight: 400;
+  color: #4285f4; /* Google blue */
+  transition: font-size 0.3s ease;
+}
+
+/* Search container spacing */
+.search-container {
+  margin-top: 0; /* Remove any conflicting top margin */
+  margin-bottom: 30px;
+}
+
 /* Mobile First - Small Devices */
 @media (max-width: 480px) {
   .search-options {
@@ -23,7 +39,7 @@
 
   .google-logo {
     font-size: 48px;
-    margin-bottom: 20px;
+    margin: 20px auto 25px auto; /* Optimal gap for mobile */
   }
 
   .search-container {
@@ -72,6 +88,7 @@
 
   .google-logo {
     font-size: 60px;
+    margin: 30px auto 30px auto; /* Better spacing for tablets */
   }
 
   .search-container {
@@ -87,10 +104,12 @@
 @media (min-width: 769px) {
   .google-logo {
     font-size: 120px;
+    margin: 60px auto 45px auto; /* Perfect gap for desktop */
   }
 
   .dark-theme .google-logo {
     font-size: 120px;
+    margin: 60px auto 45px auto; /* Same spacing in dark theme */
   }
 
   .search-container {
@@ -142,6 +161,19 @@
   .dark-theme .search-container {
     max-width: 800px;
   }
+
+  .google-logo {
+    margin: 80px auto 55px auto; /* Generous but not excessive spacing */
+  }
+}
+
+/* Additional fix for container layout */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding-top: 20px; /* Ensure top spacing */
 }
 
 /* High DPI Displays */

@@ -38,15 +38,16 @@ body.dark-theme {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; /* Changed from center to flex-start */
   min-height: 100vh;
-  padding: 80px 40px 40px;
+  padding: 60px 40px 40px; /* Reduced top padding from 80px to 60px */
   max-width: 1400px;
   margin: 0 auto;
 }
 
 .home-container.dark-theme {
   justify-content: flex-start;
+  padding: 50px 40px 40px; /* Reduced top padding for dark theme too */
 }
 
 /* ============================================
@@ -56,7 +57,7 @@ body.dark-theme {
 .google-logo {
   font-size: 90px;
   font-weight: normal;
-  margin: 0 auto 30px;
+  margin: 10px auto 40px; /* Increased top margin from 0 to 60px, increased bottom margin from 30px to 40px */
   text-align: center;
   font-family: arial, sans-serif;
   letter-spacing: -2px;
@@ -68,6 +69,7 @@ body.dark-theme {
   color: #e8eaed;
   font-size: 80px;
   font-weight: 400;
+  margin: 50px auto 35px; /* Adjusted margins for dark theme */
 }
 
 .logo-small {
@@ -90,12 +92,12 @@ body.dark-theme {
   position: relative;
   width: 100%;
   max-width: 584px;
-  margin: 0 auto;
+  margin: 0 auto 40px; /* Added bottom margin to create space */
 }
 
 .dark-theme .search-container {
   max-width: 700px;
-  margin-bottom: 30px;
+  margin-bottom: 45px; /* Increased bottom margin for dark theme */
 }
 
 .search-box {
@@ -243,7 +245,7 @@ body.dark-theme {
   flex-wrap: wrap;
   gap: 12px;
   justify-content: center;
-  margin: 30px 0;
+  margin: 20px 0 35px; /* Reduced top margin from 30px to 20px, increased bottom margin from 0 to 35px */
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
@@ -331,7 +333,7 @@ body.dark-theme {
   background: #f8f9fa;
   border-radius: 20px;
   padding: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 25px; /* Reduced from 30px to 25px */
   border: 1px solid #e8eaed;
 }
 
@@ -787,5 +789,314 @@ body.dark-theme {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* ============================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================ */
+
+/* Mobile First - Small Devices */
+@media (max-width: 480px) {
+  .home-container {
+    padding: 40px 20px 40px; /* Reduced top padding for mobile */
+  }
+
+  .google-logo {
+    font-size: 48px;
+    margin: 40px auto 25px; /* Adjusted margins for mobile */
+  }
+
+  .dark-theme .google-logo {
+    font-size: 48px;
+    margin: 35px auto 20px;
+  }
+
+  .search-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    max-width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+    margin: 15px auto 25px; /* Adjusted margins */
+  }
+
+  .mini-search-box {
+    min-width: 140px;
+    padding: 8px 12px;
+    justify-content: center;
+  }
+
+  .option-text {
+    font-size: 12px;
+  }
+
+  .search-container {
+    max-width: 90%;
+    margin-bottom: 30px; /* Consistent spacing */
+  }
+
+  .quick-access-grid > * {
+    max-width: 25%;
+  }
+
+  .quick-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .theme-toggle {
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .theme-toggle-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Tablet - Medium Devices */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 50px 30px 40px; /* Adjusted top padding */
+  }
+
+  .google-logo {
+    font-size: 60px;
+    margin: 45px auto 30px; /* Adjusted margins */
+  }
+
+  .search-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    max-width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+    justify-items: center;
+    margin: 18px auto 30px; /* Adjusted margins */
+  }
+
+  .mini-search-box {
+    min-width: 160px;
+    justify-content: center;
+  }
+
+  .search-container {
+    max-width: 90%;
+    margin-bottom: 35px; /* Consistent spacing */
+  }
+
+  .quick-access-grid {
+    gap: 20px;
+  }
+}
+
+/* Desktop - Large Devices */
+@media (min-width: 769px) {
+  .google-logo {
+    font-size: 120px;
+    margin: 60px auto 40px; /* Consistent with updated margins */
+  }
+
+  .dark-theme .google-logo {
+    font-size: 120px;
+    margin: 50px auto 35px;
+  }
+
+  .search-container {
+    max-width: 700px;
+    margin-bottom: 40px;
+  }
+
+  .dark-theme .search-box {
+    height: 56px;
+    font-size: 18px;
+    padding: 0 60px 0 24px;
+  }
+
+  .quick-access {
+    max-width: 700px;
+  }
+
+  .quick-icon {
+    width: 56px;
+    height: 56px;
+    font-size: 28px;
+  }
+
+  .discover-section {
+    max-width: 700px;
+  }
+
+  .discover-item {
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .discover-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 22px;
+  }
+}
+
+/* Extra Large Devices */
+@media (min-width: 1200px) {
+  .home-container {
+    max-width: 1600px;
+  }
+
+  .search-container {
+    max-width: 800px;
+  }
+
+  .dark-theme .search-container {
+    max-width: 800px;
+  }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .search-icon,
+  .mini-search-icon,
+  .theme-toggle-icon {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .cursor {
+    animation: none;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .search-box {
+    border-width: 2px;
+  }
+
+  .mini-search-box {
+    border-width: 2px;
+  }
+
+  .nav-button {
+    border-width: 2px;
+  }
+}
+
+.ai-overview {
+  background: #303134;
+  border: 1px solid #3c4043;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+  animation: slideInUp 0.6s ease-out;
+}
+
+.ai-overview-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #e8eaed;
+}
+
+.ai-icon {
+  background: linear-gradient(45deg, #4285f4, #ea4335, #fbbc05, #34a853);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.ai-title {
+  font-size: 18px;
+  font-weight: 400;
+  color: #e8eaed;
+  margin-bottom: 12px;
+}
+
+.ai-summary {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #bdc1c6;
+  margin-bottom: 16px;
+}
+
+.ai-points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ai-points li {
+  font-size: 14px;
+  color: #bdc1c6;
+  margin-bottom: 8px;
+  padding-left: 16px;
+  position: relative;
+  animation: fadeInLeft 0.4s ease-out both;
+}
+
+.ai-points li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  color: #4285f4;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
   }
 }

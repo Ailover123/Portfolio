@@ -15,6 +15,7 @@ import ThemeToggle from "./components/ThemeToggle";
 const ThemeContext = createContext();
 
 function App() {
+  const [typingText, setTypingText] = useState("");
   const [page, setPage] = useState("home");
   const [selectedOption, setSelectedOption] = useState(null);
   const [searchInput, setSearchInput] = useState("");
@@ -62,12 +63,39 @@ function App() {
   }, [selectedOption]);
 
   const handleOptionSelect = (option) => {
+    const fullQuery = `Nishal ${option}`;
     setSelectedOption(option);
-    setPage("home");
+    setPage("home"); // Go to home page where animation happens
+
+    // Reset states before animation starts
+    setTypingText(""); // Clear old typed text
+    setSearchInput(""); // Clear search input
+    setIsTyping(true); // Trigger typing animation
+
+    // Typing animation
+    let current = 0;
+
+    // Small delay before first character to prevent race condition
+    setTimeout(() => {
+      const typeChar = () => {
+        if (current < fullQuery.length) {
+          setTypingText((prev) => prev + fullQuery[current]);
+          current++;
+          setTimeout(typeChar, 80); // Speed of typing
+        } else {
+          setIsTyping(false);
+          setSearchInput(fullQuery); // Final query
+          setPage("results"); // Navigate after typing
+        }
+      };
+
+      typeChar(); // Start animation
+    }, 50); // Delay helps flush state reset
   };
 
   const handleSearch = (query) => {
     if (!isTyping) {
+      setSearchInput(query); // Store the search query
       setPage("results");
     }
   };
@@ -108,10 +136,10 @@ function App() {
             <SearchBar
               onSearch={handleSearch}
               inputValue={searchInput}
-              onInputChange={handleInputChange}
-              theme={theme}
+              onInputChange={(val) => setSearchInput(val)}
+              typingText={typingText}
+              isTyping={isTyping}
             />
-
             {/* Show typing cursor effect */}
             {isTyping && (
               <div className="typing-indicator">
@@ -137,7 +165,11 @@ function App() {
         )}
 
         {page === "results" && (
-          <ResultsPage onBack={() => navigateToPage("home")} />
+          <ResultsPage
+            onBack={() => navigateToPage("home")}
+            searchInput={searchInput}
+            query={selectedOption ? `Nishal ${selectedOption}` : searchInput}
+          />
         )}
       </div>
     </ThemeContext.Provider>
