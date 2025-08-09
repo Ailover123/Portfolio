@@ -6,7 +6,6 @@ function SearchBar({
   inputValue,
   onInputChange,
   theme: propTheme,
-  typingText,
   isTyping,
 }) {
   const [input, setInput] = useState("");
@@ -31,7 +30,7 @@ function SearchBar({
     console.log("SearchBar theme updated:", theme);
   }, [theme]);
 
-  const currentInput = inputValue !== undefined ? inputValue : input;
+  const currentInput = inputValue || input;
 
   const quotes = [
     "Let curiosity do the talking!",
@@ -88,7 +87,7 @@ function SearchBar({
         className="search-box"
         placeholder="Search or type URL"
         disabled={isTyping}
-        value={isTyping ? typingText : currentInput}
+        value={currentInput}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
         style={{

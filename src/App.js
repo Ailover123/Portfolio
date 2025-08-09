@@ -33,64 +33,32 @@ function App() {
     }
   };
 
-  // Animate typing "Nishal [option]" in search bar when selectedOption changes
-  useEffect(() => {
-    if (selectedOption) {
-      const text = `Nishal ${selectedOption}`;
-      let index = 0;
-      setSearchInput("");
-      setIsTyping(true);
-
-      const interval = setInterval(() => {
-        setSearchInput(text.substring(0, index + 1));
-        index++;
-
-        if (index >= text.length) {
-          clearInterval(interval);
-          setIsTyping(false);
-          // Show results after typing animation completes
-          setTimeout(() => {
-            // Results will be shown in the component below
-          }, 300);
-        }
-      }, 100); // Typing speed: 100ms per character
-
-      return () => {
-        clearInterval(interval);
-        setIsTyping(false);
-      };
-    }
-  }, [selectedOption]);
-
   const handleOptionSelect = (option) => {
     const fullQuery = `Nishal ${option}`;
     setSelectedOption(option);
-    setPage("home"); // Go to home page where animation happens
+    setPage("home");
 
-    // Reset states before animation starts
-    setTypingText(""); // Clear old typed text
-    setSearchInput(""); // Clear search input
-    setIsTyping(true); // Trigger typing animation
+    // Reset states
+    setTypingText("");
+    setSearchInput("");
+    setIsTyping(true);
 
-    // Typing animation
+    // Start typing animation
     let current = 0;
-
-    // Small delay before first character to prevent race condition
     setTimeout(() => {
       const typeChar = () => {
         if (current < fullQuery.length) {
-          setTypingText((prev) => prev + fullQuery[current]);
+          setTypingText(fullQuery.substring(0, current + 1));
           current++;
-          setTimeout(typeChar, 80); // Speed of typing
+          setTimeout(typeChar, 80);
         } else {
           setIsTyping(false);
-          setSearchInput(fullQuery); // Final query
-          setPage("results"); // Navigate after typing
+          setSearchInput(fullQuery);
+          setPage("results");
         }
       };
-
-      typeChar(); // Start animation
-    }, 50); // Delay helps flush state reset
+      typeChar();
+    }, 50);
   };
 
   const handleSearch = (query) => {
@@ -135,9 +103,8 @@ function App() {
 
             <SearchBar
               onSearch={handleSearch}
-              inputValue={searchInput}
-              onInputChange={(val) => setSearchInput(val)}
-              typingText={typingText}
+              inputValue={isTyping ? typingText : searchInput}
+              onInputChange={handleInputChange}
               isTyping={isTyping}
             />
             {/* Show typing cursor effect */}

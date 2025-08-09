@@ -86,7 +86,7 @@ function SearchOptions({ onSelect }) {
         <div
           key={option.name}
           className="mini-search-container"
-          onClick={() => onSelect(option.name)}
+          onClick={() => onSelect(option.query)} // Use option.query instead of option.name
         >
           <div className="mini-search-box">
             <span className="option-icon-container">{option.icon}</span>
