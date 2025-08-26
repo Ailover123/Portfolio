@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import GithubIcon from "../assets/github.png";
+import LinkedIn from "../assets/linkedin.jpg";
 
 // Enhanced AI overview content
 const aiOverviewContent = {
@@ -73,28 +75,28 @@ const dummyResults = [
     url: "https://github.com/nishalgopal",
     description:
       "Explore my open-source contributions, personal projects, and code repositories. Active contributor with 50+ repositories and 200+ commits.",
-    favicon: "🐙",
+    favicon: GithubIcon,
   },
   {
     title: "LinkedIn - Nishal Gopal Poojary",
     url: "https://linkedin.com/in/nishalgopal",
     description:
       "Professional profile showcasing experience in software development, AI/ML projects, and technical skills. Connect for opportunities.",
-    favicon: "💼",
+    favicon: LinkedIn,
   },
   {
     title: "ZenLoop - Meditation App | Nishal's Projects",
     url: "https://github.com/nishalgopal/zenloop",
     description:
       "A comprehensive meditation and mindfulness mobile application built with Flutter. Features guided meditations, progress tracking, and personalized recommendations.",
-    favicon: "🧘",
+    favicon: GithubIcon,
   },
   {
     title: "NanBot AI Chatbot | Machine Learning Project",
     url: "https://github.com/nishalgopal/nanbot",
     description:
       "An intelligent chatbot powered by natural language processing and machine learning algorithms. Built with Python and TensorFlow.",
-    favicon: "🤖",
+    favicon: GithubIcon,
   },
   {
     title: "DataDash Analytics Platform",
@@ -304,34 +306,6 @@ function ResultsPage({ query, goHome, navigateToPage }) {
                     alt="Nishal Gopal Poojary"
                     className="ai-overview-image"
                   />
-                  <svg
-                    width="120"
-                    height="120"
-                    viewBox="0 0 120 120"
-                    fill="none"
-                  >
-                    <rect
-                      width="120"
-                      height="120"
-                      rx="12"
-                      fill="#f8f9fa"
-                      stroke="#dadce0"
-                    />
-                    <path
-                      d="M50 45L55 55L65 40L80 60H40L50 45Z"
-                      fill="#9aa0a6"
-                    />
-                    <circle cx="55" cy="35" r="5" fill="#9aa0a6" />
-                    <text
-                      x="60"
-                      y="85"
-                      fontSize="10"
-                      fill="#5f6368"
-                      textAnchor="middle"
-                    >
-                      Add your image here
-                    </text>
-                  </svg>
                 </div>
 
                 <div className="ai-image-caption">
@@ -362,7 +336,30 @@ function ResultsPage({ query, goHome, navigateToPage }) {
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="result-header">
-                <div className="result-favicon">{result.favicon}</div>
+                <div className="result-favicon">
+                  {typeof result.favicon === "string" &&
+                  result.favicon.startsWith("http") ? (
+                    <img
+                      src={result.favicon}
+                      alt="favicon"
+                      width="20"
+                      height="20"
+                    />
+                  ) : typeof result.favicon === "string" &&
+                    result.favicon.length === 1 ? (
+                    // Emoji favicon
+                    <span>{result.favicon}</span>
+                  ) : (
+                    // Imported image (like GithubIcon)
+                    <img
+                      src={result.favicon}
+                      alt="favicon"
+                      width="20"
+                      height="20"
+                    />
+                  )}
+                </div>
+
                 <div className="result-url-info">
                   <div className="result-breadcrumb">
                     {new URL(result.url).hostname}
