@@ -37,7 +37,7 @@ A modern, immersive developer portfolio built to showcase my work, skills, and p
 | Category | Highlights |
 |---|---|
 | **Hero Section** | Animated shiny text, blur-in typography, profile card with tilt interaction |
-| **About Me** | Auto-animated stats (20+ projects, 3+ years experience), scroll-triggered reveals |
+| **About Me** | Auto-animated stats (12+ projects, 3+ years experience), scroll-triggered reveals |
 | **Tools & Technologies** | Staggered AOS grid showcasing 13+ tools with glassmorphic cards |
 | **Project Showcase** | ChromaGrid gallery with GSAP-powered cursor-follow glow, modal deep-dives |
 | **Contact & Chat** | Firebase-powered real-time chat room alongside a FormSubmit contact form |
@@ -178,12 +178,12 @@ This portfolio is built around three core principles:
 
 | # | Project | Domain |
 |---|---|---|
-| 1 | **AIS Detection App** | AI / Healthcare — Early detection of Adolescent Idiopathic Scoliosis |
-| 2 | **IoT Air Quality Monitoring** | IoT / Environment — Real-time air quality sensor dashboard |
-| 3 | **IoT Heartbeat Monitoring** | IoT / Healthcare — Live heart rate tracking via web interface |
-| 4 | **Personal Web Portfolio** | Web Development — This very site |
-| 5 | **Color Blindness Detection** | Cross-platform / Health — Ishihara-style color vision tests |
-| 6 | **Coffee Shop Website** | Web Development / E-commerce — Online ordering & menu platform |
+| 1 | **Defacement Detection System** | AI / Cybersecurity — Production-grade web integrity monitoring engine |
+| 2 | **Opportunity-Hub** | SaaS / Career — Intelligent platform for students and professionals |
+| 3 | **DataDash** | Software / Utility — Secure cross-platform peer-to-peer file transfer system |
+| 4 | **Smart Wheelchair (SmartNav)** | AI / Robotics — Assistive mobility system with voice and health monitoring |
+| 5 | **Named Memories** | Mobile App / Archive — Digital memories archive built with Flutter |
+| 6 | **Personal Web Portfolio** | Web Development — This very site |
 
 ---
 

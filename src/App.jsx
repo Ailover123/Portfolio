@@ -130,7 +130,7 @@ function App() {
                 <div className="flex flex-col sm:flex-row items-center sm:justify-between text-center sm:text-left gap-y-8 sm:gap-y-0 mb-4 w-full">
                   <div>
                     <h1 className="text-3xl md:text-4xl mb-1">
-                      20<span className="text-violet-500">+</span>
+                      12<span className="text-violet-500">+</span>
                     </h1>
                     <p>Project Finished</p>
                   </div>

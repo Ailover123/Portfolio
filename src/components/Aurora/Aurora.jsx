@@ -124,10 +124,12 @@ export default function Aurora(props) {
     const ctn = ctnDom.current;
     if (!ctn) return;
 
+    const isMobile = window.innerWidth < 768;
     const renderer = new Renderer({
       alpha: true,
       premultipliedAlpha: true,
-      antialias: true
+      antialias: !isMobile,
+      dpr: isMobile ? 1 : Math.min(window.devicePixelRatio, 2)
     });
     const gl = renderer.gl;
     gl.clearColor(0, 0, 0, 0);
@@ -174,8 +176,17 @@ export default function Aurora(props) {
     ctn.appendChild(gl.canvas);
 
     let animateId = 0;
+    let lastTime = 0;
     const update = (t) => {
       animateId = requestAnimationFrame(update);
+      
+      // Throttle to ~30fps on mobile to save battery and reduce lag
+      if (isMobile) {
+        const now = performance.now();
+        if (now - lastTime < 33) return; // 33ms = 30fps
+        lastTime = now;
+      }
+
       const { time = t * 0.01, speed = 1.0 } = propsRef.current;
       program.uniforms.uTime.value = time * speed * 0.1;
       program.uniforms.uAmplitude.value = propsRef.current.amplitude ?? 1.0;
