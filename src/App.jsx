@@ -261,7 +261,8 @@ function App() {
           {/* Contact Form Container */}
           <div className="max-w-3xl mx-auto w-full">
               <form
-                onSubmit={handleFormSubmit}
+                action="https://formsubmit.co/nishalpoojary23@gmail.com"
+                method="POST"
                 className="bg-zinc-800 p-10 w-full rounded-md"
                 autoComplete="off"
                 data-aos="fade-up"
