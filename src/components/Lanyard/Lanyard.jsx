@@ -15,18 +15,19 @@ import './Lanyard.css';
 
 extend({ MeshLineGeometry, MeshLineMaterial });
 
-export default function Lanyard({ position = [0, 0, 30], gravity = [0, -40, 0], fov = 20, transparent = true }) {
-  return (
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
+    return (
     <div className="lanyard-wrapper">
       <Canvas
-        dpr={typeof window !== 'undefined' && window.innerWidth < 768 ? 1 : [1, 2]}
+        dpr={isMobile ? 1 : [1, 2]}
         camera={{ position: position, fov: fov }}
-        gl={{ alpha: transparent, antialias: typeof window !== 'undefined' && window.innerWidth >= 768 }}
+        gl={{ alpha: transparent, antialias: !isMobile }}
         onCreated={({ gl }) => gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)}
       >
         <ambientLight intensity={Math.PI} />
-        <Physics gravity={gravity} timeStep={1 / 60}>
-          <Band />
+        <Physics gravity={gravity} timeStep={isMobile ? 1 / 30 : 1 / 60}>
+          <Band isMobile={isMobile} />
         </Physics>
         <Environment blur={0.75}>
           <Lightformer intensity={2} color="white" position={[0, -1, 5]} rotation={[0, 0, Math.PI / 3]} scale={[100, 0.1, 1]} />
@@ -38,7 +39,7 @@ export default function Lanyard({ position = [0, 0, 30], gravity = [0, -40, 0], 
     </div>
   );
 }
-function Band({ maxSpeed = 50, minSpeed = 0 }) {
+function Band({ maxSpeed = 50, minSpeed = 0, isMobile }) {
   const band = useRef(), fixed = useRef(), j1 = useRef(), j2 = useRef(), j3 = useRef(), card = useRef();
   const vec = new THREE.Vector3(), ang = new THREE.Vector3(), rot = new THREE.Vector3(), dir = new THREE.Vector3();
   const segmentProps = { type: 'dynamic', canSleep: true, colliders: false, angularDamping: 4, linearDamping: 4 };
@@ -75,12 +76,12 @@ function Band({ maxSpeed = 50, minSpeed = 0 }) {
 
   useEffect(() => {
     if (materials.base?.map) {
-      materials.base.map.anisotropy = 16;
+      materials.base.map.anisotropy = isMobile ? 4 : 16;
       materials.base.map.minFilter = THREE.LinearFilter;
       materials.base.map.magFilter = THREE.LinearFilter;
       materials.base.map.needsUpdate = true;
     }
-  }, [materials]);
+  }, [materials, isMobile]);
 
   useFrame((state, delta) => {
     if (dragged) {
@@ -100,7 +101,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }) {
       curve.points[1].copy(j2.current.lerped);
       curve.points[2].copy(j1.current.lerped);
       curve.points[3].copy(fixed.current.translation());
-      band.current.geometry.setPoints(curve.getPoints(32));
+      band.current.geometry.setPoints(curve.getPoints(isMobile ? 12 : 32));
       ang.copy(card.current.angvel());
       rot.copy(card.current.rotation());
       card.current.setAngvel({ x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z });
@@ -126,14 +127,14 @@ function Band({ maxSpeed = 50, minSpeed = 0 }) {
         <RigidBody position={[2, 0, 0]} ref={card} {...segmentProps} type={dragged ? 'kinematicPosition' : 'dynamic'}>
           <CuboidCollider args={[0.8, 1.125, 0.01]} />
           <group
-            scale={3.00}
+            scale={isMobile ? 2.5 : 3.00}
             position={[0, -1.2, -0.05]}
             onPointerOver={() => hover(true)}
             onPointerOut={() => hover(false)}
             onPointerUp={(e) => (e.target.releasePointerCapture(e.pointerId), drag(false))}
             onPointerDown={(e) => (e.target.setPointerCapture(e.pointerId), drag(new THREE.Vector3().copy(e.point).sub(vec.copy(card.current.translation()))))}>
             <mesh geometry={nodes.card.geometry}>
-              <meshPhysicalMaterial map={materials.base.map} map-anisotropy={16} clearcoat={1} clearcoatRoughness={0.15} roughness={0.9} metalness={0.8} />
+              <meshPhysicalMaterial map={materials.base.map} map-anisotropy={isMobile ? 4 : 16} clearcoat={isMobile ? 0 : 1} clearcoatRoughness={0.15} roughness={0.9} metalness={0.8} />
             </mesh>
             <mesh geometry={nodes.clip.geometry} material={materials.metal} material-roughness={0.3} />
             <mesh geometry={nodes.clamp.geometry} material={materials.metal} />

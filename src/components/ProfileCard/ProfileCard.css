@@ -348,9 +348,26 @@
 }
 
 @media (max-width: 768px) {
+  .pc-card-wrapper::before {
+    filter: none;
+    opacity: 0.5;
+  }
+
   .pc-card {
     height: 70svh;
     max-height: 450px;
+    animation: none;
+    background-image: var(--inner-gradient); /* Simplified bg for mobile */
+    filter: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+
+  .pc-shine {
+    display: none; /* Hide holographic effect on mobile */
+  }
+
+  .pc-glare {
+    display: none; /* Hide glare on mobile */
   }
 
   .pc-details {
