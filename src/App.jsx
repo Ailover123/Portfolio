@@ -167,7 +167,7 @@ function App() {
         </div>
         <div className="tools mt-32">
           <h1 className="text-4xl/snug font-bold mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true" >Tools & Technologies</h1>
-          <p className="w-2/5 text-base/loose opacity-50" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300" data-aos-once="true">My Profesional Skills</p>
+          <p className="w-2/5 text-base/loose opacity-50" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300" data-aos-once="true">My Professional Skills</p>
           <div className="tools-box mt-14 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
 
             {listTools.map((tool) => (
@@ -198,15 +198,15 @@ function App() {
         {/* about */}
 
         {/* Project */}
-        <div className="proyek mt-32 py-10" id="project" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true"></div>
+        <div className="projects mt-32 py-10" id="project" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true"></div>
         <h1 className="text-center text-4xl font-bold mb-2" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">Project</h1>
         <p className="text-base/loose text-center opacity-50" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300" data-aos-once="true">Showcasing a selection of projects that reflect my skills, creativity, and passion for building meaningful digital experiences.</p>
-        <div className="proyek-box mt-14" >
+        <div className="projects-box mt-14" >
 
           <div style={{ height: 'auto', position: 'relative' }} data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" data-aos-once="true" >
             <ChromaGrid
               items={listProject}
-              onItemClick={handleProjectClick} // Kirim fungsi untuk handle klik
+              onItemClick={handleProjectClick} // Send function to handle clicks
               radius={500}
               damping={0.45}
               fadeOut={0.6}
@@ -218,7 +218,7 @@ function App() {
 
 
         {/* Contact */}
-        <div className="kontak mt-32 sm:p-10 p-0" id="contact">
+        <div className="contact mt-32 sm:p-10 p-0" id="contact">
           <h1
             className="text-4xl mb-2 font-bold text-center"
             data-aos="fade-up"
@@ -302,7 +302,7 @@ function App() {
             </div>
           </div>
         </div>
-        {/* Kontak */}
+        {/* Contact */}
       </main>
 
       <ProjectModal
