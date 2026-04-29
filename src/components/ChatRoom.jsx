@@ -146,7 +146,7 @@ export default function ChatRoom() {
             />
             Login with Google
           </button>
-          <p className="text-sm text-gray-400">Login untuk mengirim pesan</p>
+          {/* Removed hint text */}
         </div>
       )}
     </div>
