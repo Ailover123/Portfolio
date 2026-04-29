@@ -23,9 +23,9 @@ import Tools13 from "/assets/tools/git.png";
 export const listTools = [
   {
     id: 1,
-    gambar: Tools2,
-    nama: "Antigravity",
-    ket: "IDE",
+    image: Tools2,
+    name: "Antigravity",
+    description: "IDE",
     dad: "100",
   },
   {
@@ -121,7 +121,7 @@ import Proyek4 from "/assets/proyek/proyek4.jpg";
 import Proyek5 from "/assets/proyek/proyek5.jpg";
 import Proyek6 from "/assets/proyek/proyek6.jpg";
 
-export const listProyek = [
+export const listProject = [
   {
     id: 1,
     image: Proyek1,

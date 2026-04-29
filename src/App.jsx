@@ -6,7 +6,7 @@ import ScrambledText from "./components/ScrambledText/ScrambledText";
 import SplitText from "./components/SplitText/SplitText";
 import Lanyard from "./components/Lanyard/Lanyard";
 import GlassIcons from "./components/GlassIcons/GlassIcons";
-import { listTools, listProyek } from "./data";
+import { listTools, listProject } from "./data";
 import ChromaGrid from "./components/ChromaGrid/ChromaGrid";
 import ProjectModal from "./components/ProjectModal/ProjectModal"; // <-- IMPORT MODAL
 import Aurora from "./components/Aurora/Aurora";
@@ -20,7 +20,7 @@ function App() {
   const aboutRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
-  const [selectedProject, setSelectedProject] = useState(null); // null = modal tertutup
+  const [selectedProject, setSelectedProject] = useState(null); // null = modal closed
 
   const handleProjectClick = (project) => {
     setSelectedProject(project);
@@ -109,11 +109,11 @@ function App() {
             />
           </div>
         </div>
-        {/* tentang */}
+        {/* about */}
         <div className="mt-15 mx-auto w-full max-w-[1600px] rounded-3xl border-[5px] border-violet-500/40 shadow-[0_0_30px_rgba(168,85,247,0.4)] bg-gradient-to-br from-[#0a0a0a] via-[#111111] to-[#1a1a1a] p-6" id="about">
           <div className="flex flex-col md:flex-row items-center justify-between gap-10 pt-0 px-8" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
             <div className="basis-full md:basis-7/12 pr-0 md:pr-8 border-b md:border-b-0 md:border-r border-violet-500/30">
-              {/* Kolom kiri */}
+              {/* Left column */}
               <div className="flex-1 text-left">
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-5">
                   About Me
@@ -158,7 +158,7 @@ function App() {
               </div>
             </div>
 
-            {/* Kolom kanan */}
+            {/* Right column */}
             <div className="basis-full md:basis-5/12 pl-0 md:pl-8 overflow-hidden max-w-full flex justify-center ">
               <Lanyard position={[0, 0, 15]} gravity={[0, -40, 0]} />
             </div>
@@ -176,28 +176,28 @@ function App() {
                 className="flex items-center gap-4 p-4 border border-zinc-700 rounded-xl bg-zinc-900/60 backdrop-blur-md hover:bg-zinc-800/80 transition-all duration-300 group shadow-lg"
               >
                 <img
-                  src={tool.gambar}
+                  src={tool.image}
                   alt="Tools Image"
                   className="w-16 h-16 object-contain bg-zinc-800 p-2 rounded-lg group-hover:bg-zinc-900 transition-all duration-300"
                 />
                 <div className="flex flex-col overflow-hidden">
                   <div className="truncate">
                     <ShinyText
-                      text={tool.nama}
+                      text={tool.name}
                       disabled={false}
                       speed={3}
                       className="text-lg font-semibold block"
                     />
                   </div>
-                  <p className="text-sm text-zinc-400 truncate">{tool.ket}</p>
+                  <p className="text-sm text-zinc-400 truncate">{tool.description}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
-        {/* tentang */}
+        {/* about */}
 
-        {/* Proyek */}
+        {/* Project */}
         <div className="proyek mt-32 py-10" id="project" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true"></div>
         <h1 className="text-center text-4xl font-bold mb-2" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">Project</h1>
         <p className="text-base/loose text-center opacity-50" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300" data-aos-once="true">Showcasing a selection of projects that reflect my skills, creativity, and passion for building meaningful digital experiences.</p>
@@ -205,7 +205,7 @@ function App() {
 
           <div style={{ height: 'auto', position: 'relative' }} data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" data-aos-once="true" >
             <ChromaGrid
-              items={listProyek}
+              items={listProject}
               onItemClick={handleProjectClick} // Kirim fungsi untuk handle klik
               radius={500}
               damping={0.45}
@@ -214,10 +214,10 @@ function App() {
             />
           </div>
         </div>
-        {/* Proyek */}
+        {/* Project */}
 
 
-        {/* Kontak */}
+        {/* Contact */}
         <div className="kontak mt-32 sm:p-10 p-0" id="contact">
           <h1
             className="text-4xl mb-2 font-bold text-center"
@@ -237,17 +237,17 @@ function App() {
             Get in touch with me or chat in real-time
           </p>
 
-          {/* Container dua kolom */}
+          {/* Two column container */}
           <div className="flex flex-col md:flex-row gap-8">
-            {/* Chat Room di kiri */}
+            {/* Chat Room on the left */}
             <div className="flex-1 bg-zinc-800 p-6 rounded-md" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" data-aos-once="true">
               <ChatRoom />
             </div>
 
-            {/* Contact Form di kanan */}
+            {/* Contact Form on the right */}
             <div className="flex-1">
               <form
-                action="https://formsubmit.co/rissoppa21@gmail.com"
+                action="https://formsubmit.co/nishalpoojary23@gmail.com"
                 method="POST"
                 className="bg-zinc-800 p-10 w-full rounded-md"
                 autoComplete="off"
