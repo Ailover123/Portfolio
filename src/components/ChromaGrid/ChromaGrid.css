@@ -3,12 +3,11 @@
   width: 100%;
   height: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, 320px);
   grid-auto-rows: auto;
-  align-items: start; /* Prevents cards from stretching vertically */
   justify-content: center;
-  gap: 2rem;
-  max-width: 1400px;
+  gap: 1.5rem;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
   box-sizing: border-box;
@@ -18,19 +17,10 @@
   --r: 220px;
 }
 
-@media (min-width: 1024px) and (max-width: 1280px) {
-  .chroma-grid {
-    grid-template-columns: repeat(auto-fit, minmax(400px, 450px));
-    max-width: 1500px;
-    }
-}
-
-
 @media (max-width: 1024px) {
   .chroma-grid {
-    grid-template-columns: 100%;
-    max-width: 500px;
-    gap: 1.5rem;
+    grid-template-columns: 320px;
+    gap: 1rem;
   }
 }
 
@@ -38,8 +28,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 100%; /* Take full width of the grid cell (400px-450px) */
-  max-width: 500px;
+  width: 320px;
   height: auto;
   border-radius: 20px;
   overflow: hidden;
@@ -77,17 +66,18 @@
   position: relative;
   z-index: 1;
   width: 100%;
-  aspect-ratio: 16 / 9; /* Forces a flatter cinematic landscape shape */
+  height: 200px; /* Hard fixed height to ensure horizontal look */
   padding: 10px;
   box-sizing: border-box;
   background: transparent;
   transition: background 0.3s ease;
+  overflow: hidden;
 }
 
 .chroma-img-wrapper img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures the image fills the 16:10 box without stretching */
+  object-fit: cover; /* Automatically crops vertical images to fit the 200px box */
   border-radius: 10px;
   display: block;
 }
@@ -95,12 +85,12 @@
 .chroma-info {
   position: relative;
   z-index: 1;
-  padding: 1rem 1rem;
+  padding: 1rem 1.5rem;
   color: #fff;
   font-family: system-ui, sans-serif;
-  display: grid;
-  row-gap: rem;
-  column-gap: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .chroma-info .role,
