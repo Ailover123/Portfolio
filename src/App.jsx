@@ -29,9 +29,30 @@ function App() {
   const handleCloseModal = () => {
     setSelectedProject(null);
   };
-  // -------------------------
-
-  // -------------------------
+  const [formStatus, setFormStatus] = useState(null); // 'sending', 'success', 'error'
+  
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    setFormStatus('sending');
+    
+    const formData = new FormData(e.target);
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/nishalpoojary23@gmail.com", {
+        method: "POST",
+        body: formData
+      });
+      
+      if (response.ok) {
+        setFormStatus('success');
+        e.target.reset();
+        setTimeout(() => setFormStatus(null), 5000); // Reset status after 5s
+      } else {
+        setFormStatus('error');
+      }
+    } catch (error) {
+      setFormStatus('error');
+    }
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -240,8 +261,7 @@ function App() {
           {/* Contact Form Container */}
           <div className="max-w-3xl mx-auto w-full">
               <form
-                action="https://formsubmit.co/nishalpoojary23@gmail.com"
-                method="POST"
+                onSubmit={handleFormSubmit}
                 className="bg-zinc-800 p-10 w-full rounded-md"
                 autoComplete="off"
                 data-aos="fade-up"
@@ -285,10 +305,23 @@ function App() {
                   <div className="text-center">
                     <button
                       type="submit"
-                      className="font-semibold bg-[#1a1a1a] p-4 px-6 rounded-full w-full cursor-pointer border border-gray-700 hover:bg-[#222] transition-colors"
+                      disabled={formStatus === 'sending'}
+                      className={`font-semibold p-4 px-6 rounded-full w-full cursor-pointer border border-gray-700 transition-colors ${
+                        formStatus === 'sending' ? 'bg-zinc-700 opacity-50' : 'bg-[#1a1a1a] hover:bg-[#222]'
+                      }`}
                     >
-                      <ShinyText text="Send" disabled={false} speed={3} className="custom-class" />
+                      <ShinyText 
+                        text={formStatus === 'sending' ? "Sending..." : "Send Message"} 
+                        disabled={false} 
+                        speed={3} 
+                      />
                     </button>
+                    {formStatus === 'success' && (
+                      <p className="text-green-400 mt-4 animate-bounce">Message sent successfully!</p>
+                    )}
+                    {formStatus === 'error' && (
+                      <p className="text-red-400 mt-4">Oops! Something went wrong. Please try again.</p>
+                    )}
                   </div>
                 </div>
               </form>
