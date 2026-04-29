@@ -11,7 +11,7 @@ import ChromaGrid from "./components/ChromaGrid/ChromaGrid";
 import ProjectModal from "./components/ProjectModal/ProjectModal"; // <-- IMPORT MODAL
 import Aurora from "./components/Aurora/Aurora";
 import AOS from 'aos';
-import ChatRoom from "./components/ChatRoom";
+
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 // ..
 AOS.init();
@@ -225,7 +225,7 @@ function App() {
             data-aos-duration="1000"
             data-aos-once="true"
           >
-            Contact & Chat
+            Contact Me
           </h1>
           <p
             className="text-base/loose text-center mb-10 opacity-50"
@@ -234,18 +234,11 @@ function App() {
             data-aos-delay="300"
             data-aos-once="true"
           >
-            Get in touch with me or chat in real-time
+            Get in touch with me for any inquiries or collaborations.
           </p>
 
-          {/* Two column container */}
-          <div className="flex flex-col md:flex-row gap-8">
-            {/* Chat Room on the left */}
-            <div className="flex-1 bg-zinc-800 p-6 rounded-md" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" data-aos-once="true">
-              <ChatRoom />
-            </div>
-
-            {/* Contact Form on the right */}
-            <div className="flex-1">
+          {/* Contact Form Container */}
+          <div className="max-w-3xl mx-auto w-full">
               <form
                 action="https://formsubmit.co/nishalpoojary23@gmail.com"
                 method="POST"
@@ -299,10 +292,8 @@ function App() {
                   </div>
                 </div>
               </form>
-            </div>
           </div>
         </div>
-        {/* Contact */}
       </main>
 
       <ProjectModal
