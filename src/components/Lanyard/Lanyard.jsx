@@ -15,6 +15,7 @@ import './Lanyard.css';
 
 extend({ MeshLineGeometry, MeshLineMaterial });
 
+export default function Lanyard({ position = [0, 0, 13], gravity = [0, -40, 0], fov = 25, transparent = true }) {
     const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
     return (
